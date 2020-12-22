@@ -1,0 +1,89 @@
+{% extends '@App/layout.html.twig' %}
+
+
+
+    {% block content %}
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <a class="btn btn-light" href="{{ path('address_book') }}" target="_blank">Back to list</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                {% if address is null %}
+                    <h2>Sorry :( this address could not be found </h2>
+                {% else %}
+                    <div class="panel panel-default panel-table">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col col-xs-6">
+                                    <h3 class="panel-title">{{ address.firstname }} {{ address.lastname }}</h3>
+                                </div>
+                                <div class="col col-xs-6 text-right">
+                                    <a type="button" target="_blank" href="{{ path('address_add') }}" class="btn btn-sm btn-primary btn-create">Create New</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-striped table-bordered table-list">
+                                <tbody>
+                                    <tr>
+                                        <td align="center">
+                                            <em class="fa fa-cog"></em>
+                                        </td>
+                                        <td align="center">
+                                            <a class="btn btn-default" href="{{ path('address_edit', { 'id' : address.id }) }}"><em class="fa fa-pencil"></em></a>
+                                            <a class="btn btn-danger" href="{{ path('address_remove', { 'id' : address.id }) }}"><em class="fa fa-trash"></em></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">First name</td>
+                                        <td align="center">{{ address.firstname }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">Last name</td>
+                                        <td align="center">{{ address.lastname }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">Birthday</td>
+                                        <td align="center">{{ address.birthday|date("d/m/Y") }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">Street and number</td>
+                                        <td align="center">{{ address.street }} , {{ address.number }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">Zip</td>
+                                        <td align="center">{{ address.zip }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">City</td>
+                                        <td align="center">{{ address.city }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">Country</td>
+                                        <td align="center">{{ address.country }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">Phonenumber</td>
+                                        <td align="center">{{ address.phonenumber }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">Email</td>
+                                        <td align="center">{{ address.email }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <a class="btn btn-light" href="{{ path('address_book') }}" target="_blank">Back to list</a>
+            </div>
+        </div>
+
+    {% endblock %}
